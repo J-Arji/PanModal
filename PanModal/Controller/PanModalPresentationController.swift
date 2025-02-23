@@ -175,8 +175,11 @@ open class PanModalPresentationController: UIPresentationController {
     override public func presentationTransitionWillBegin() {
 
         guard let containerView = containerView
-            else { return }
-
+        else { return }
+        
+        if self.panContainerView.frame == .zero {
+            self.adjustPresentedViewFrame()
+        }
         layoutBackgroundView(in: containerView)
         layoutPresentedView(in: containerView)
         configureScrollViewInsets()
@@ -379,10 +382,6 @@ private extension PanModalPresentationController {
         }
         panContainerView.frame.origin.x = frame.origin.x
         presentedViewController.view.frame = CGRect(origin: .zero, size: adjustedSize)
-        // Give the presentedViewController a chance to move its views above the safe area - if they are constrained to it
-        presentedViewController.view.setNeedsLayout()
-        presentedViewController.view.layoutIfNeeded()
-
     }
 
     /**
