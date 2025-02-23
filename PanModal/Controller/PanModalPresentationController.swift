@@ -67,6 +67,8 @@ open class PanModalPresentationController: UIPresentationController {
      */
     private var scrollViewYOffset: CGFloat = 0.0
 
+    private var scrollView: UIScrollView?
+
     /**
      An observer for the scroll view content offset
      */
@@ -83,6 +85,8 @@ open class PanModalPresentationController: UIPresentationController {
      The y value for the long form presentation state
      */
     private var longFormYPosition: CGFloat = 0
+
+    private var enableCustomInteractiveKeyboard: Bool = true
 
     /**
      Determine anchored Y postion based on the `anchorModalToLongForm` flag
@@ -432,6 +436,8 @@ private extension PanModalPresentationController {
         longFormYPosition = layoutPresentable.longFormYPos
         anchorModalToLongForm = layoutPresentable.anchorModalToLongForm
         extendsPanScrolling = layoutPresentable.allowsExtendedPanScrolling
+        scrollView = layoutPresentable.panScrollable
+        enableCustomInteractiveKeyboard = layoutPresentable.enableCustomInteractiveKeyboard
 
         containerView?.isUserInteractionEnabled = layoutPresentable.isUserInteractionEnabled
     }
@@ -585,9 +591,39 @@ private extension PanModalPresentationController {
         if presentedView.frame.origin.y < longFormYPosition {
             yDisplacement /= 2.0
         }
+
+        var contentOffset = scrollView?.contentOffset ?? .zero
         adjust(toYPosition: presentedView.frame.origin.y + yDisplacement)
 
+        if enableCustomInteractiveKeyboard {
+            moveKeyboardView(displacement: yDisplacement)
+        }
+
         panGestureRecognizer.setTranslation(.zero, in: presentedView)
+    }
+
+    func moveKeyboardView(displacement: CGFloat) {
+        let windows = UIApplication.shared.windows
+
+        if let keyboardWindow = windows
+            .first(where: { NSStringFromClass($0.classForCoder) == "UIRemoteKeyboardWindow" }) {
+
+            var frame = keyboardWindow.frame
+            frame.origin.y = max(displacement + frame.origin.y, .zero)
+
+            keyboardWindow.frame = frame
+
+            let accessoryView = windows
+                .first(where: { NSStringFromClass($0.classForCoder) == "UITextEffectsWindow" })
+
+            var accessoryFrame = accessoryView?.frame ?? .zero
+            accessoryFrame.origin.y = max(
+                displacement + (accessoryFrame.origin.y),
+                .zero
+            )
+
+            accessoryView?.frame = accessoryFrame
+        }
     }
 
     /**
@@ -646,6 +682,11 @@ private extension PanModalPresentationController {
         PanModalAnimator.animate({ [weak self] in
             self?.adjust(toYPosition: yPos)
             self?.isPresentedViewAnimating = true
+
+            if self?.enableCustomInteractiveKeyboard ?? false {
+                self?.moveKeyboardView(displacement: -.greatestFiniteMagnitude)
+            }
+
         }, config: presentable) { [weak self] didComplete in
             self?.isPresentedViewAnimating = !didComplete
         }
