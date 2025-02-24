@@ -64,6 +64,10 @@ public extension PanModalPresentable where Self: UIViewController {
         return true
     }
 
+    var enableCustomInteractiveKeyboard: Bool {
+        return true
+    }
+
     var allowsExtendedPanScrolling: Bool {
 
         guard let scrollView = panScrollable
@@ -124,5 +128,11 @@ public extension PanModalPresentable where Self: UIViewController {
     func panModalDidDismiss() {
 
     }
+
+    var titleView: UIView? {
+        nil
+    }
+
+
 }
 #endif
