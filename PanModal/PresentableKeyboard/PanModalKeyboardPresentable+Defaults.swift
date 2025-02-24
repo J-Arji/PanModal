@@ -24,10 +24,11 @@ public extension PanModalKeyboardPresentable where Self: UIViewController  {
     }
 
     var contentWithKeyboardHeight: CGFloat {
-        let height = (self.keyboardScrollView?.contentSize.height ?? .zero) +
-            (self.titleView?.frame.height ?? .zero) +
-            self.keyboardHeight +
-            self.extrasHeight
+        var height = (self.keyboardScrollView?.contentSize.height ?? .zero) +
+        self.keyboardHeight +
+        self.extrasHeight
+        if let navHeight = navigationController?.navigationBar.bounds.height { height += navHeight }
         return max(height, self.minimumHeight)
     }
 }
+

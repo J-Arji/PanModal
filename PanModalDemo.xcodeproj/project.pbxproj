@@ -44,8 +44,6 @@
 		944EBA2E227BB7F400C4C97B /* FullScreenNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944EBA2D227BB7F400C4C97B /* FullScreenNavController.swift */; };
 		94795C9B21F0335D008045A0 /* PanModalPresentationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94795C9A21F0335D008045A0 /* PanModalPresentationDelegate.swift */; };
 		94795C9D21F03368008045A0 /* PanContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94795C9C21F03368008045A0 /* PanContainerView.swift */; };
-		C54753482D6B816F002EB38A /* PanModalNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54753472D6B816F002EB38A /* PanModalNavController.swift */; };
-		C54753492D6B816F002EB38A /* PanModalNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54753472D6B816F002EB38A /* PanModalNavController.swift */; };
 		C547534F2D6B8202002EB38A /* PanModalKeyboardPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C547534E2D6B8202002EB38A /* PanModalKeyboardPresentable.swift */; };
 		C54753502D6B8202002EB38A /* PanModalKeyboardPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C547534E2D6B8202002EB38A /* PanModalKeyboardPresentable.swift */; };
 		C54753522D6B8211002EB38A /* PanModalKeyboardPresentable+Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54753512D6B8211002EB38A /* PanModalKeyboardPresentable+Defaults.swift */; };
@@ -122,7 +120,6 @@
 		944EBA2D227BB7F400C4C97B /* FullScreenNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenNavController.swift; sourceTree = "<group>"; };
 		94795C9A21F0335D008045A0 /* PanModalPresentationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanModalPresentationDelegate.swift; sourceTree = "<group>"; };
 		94795C9C21F03368008045A0 /* PanContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanContainerView.swift; sourceTree = "<group>"; };
-		C54753472D6B816F002EB38A /* PanModalNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanModalNavController.swift; sourceTree = "<group>"; };
 		C547534E2D6B8202002EB38A /* PanModalKeyboardPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanModalKeyboardPresentable.swift; sourceTree = "<group>"; };
 		C54753512D6B8211002EB38A /* PanModalKeyboardPresentable+Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PanModalKeyboardPresentable+Defaults.swift"; sourceTree = "<group>"; };
 		DC13905D216D90D5007A3E64 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -330,7 +327,6 @@
 		DC13906B216D9458007A3E64 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				C54753472D6B816F002EB38A /* PanModalNavController.swift */,
 				DC13906C216D9458007A3E64 /* PanModalPresentationController.swift */,
 			);
 			path = Controller;
@@ -557,7 +553,6 @@
 				0F2A2C612239C140003BDB2F /* PanModalPresentationDelegate.swift in Sources */,
 				0F2A2C622239C148003BDB2F /* PanModalHeight.swift in Sources */,
 				C54753522D6B8211002EB38A /* PanModalKeyboardPresentable+Defaults.swift in Sources */,
-				C54753482D6B816F002EB38A /* PanModalNavController.swift in Sources */,
 				0F2A2C632239C14B003BDB2F /* PanModalPresentable.swift in Sources */,
 				0F2A2C642239C14E003BDB2F /* PanModalPresentable+Defaults.swift in Sources */,
 				0F2A2C652239C151003BDB2F /* PanModalPresentable+UIViewController.swift in Sources */,
@@ -613,7 +608,6 @@
 				DC139070216D9458007A3E64 /* PanModalPresentationAnimator.swift in Sources */,
 				944EBA2E227BB7F400C4C97B /* FullScreenNavController.swift in Sources */,
 				DCA741AE216D90410021F2F2 /* AppDelegate.swift in Sources */,
-				C54753492D6B816F002EB38A /* PanModalNavController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

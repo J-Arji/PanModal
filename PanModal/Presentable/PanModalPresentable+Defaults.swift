@@ -133,21 +133,6 @@ public extension PanModalPresentable where Self: UIViewController {
         nil
     }
 
-    func updatePanModal() {
-        self.updatePanModal(toState: .longForm)
-    }
 
-    func updatePanModal(toState state: PanModalPresentationController.PresentationState) {
-        guard let panNavigation = self.navigationController as? PanModalNavController else {
-            let inset = self.panScrollable?.contentInset ?? .zero
-
-            self.panModalSetNeedsLayoutUpdate()
-            self.panModalTransition(to: state)
-
-            self.panScrollable?.contentInset = inset
-            return
-        }
-        panNavigation.updatePanModal(toState: state)
-    }
 }
 #endif
