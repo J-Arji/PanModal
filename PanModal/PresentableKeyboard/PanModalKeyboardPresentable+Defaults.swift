@@ -27,7 +27,6 @@ public extension PanModalKeyboardPresentable where Self: UIViewController  {
         var height = (self.keyboardScrollView?.contentSize.height ?? .zero) +
         self.keyboardHeight +
         self.extrasHeight
-        if let navHeight = navigationController?.navigationBar.bounds.height { height += navHeight }
         return max(height, self.minimumHeight)
     }
 }
